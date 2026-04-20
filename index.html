@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Le Chalet : Vivario, restaurant corse sur la RN193</title>
+  <meta name="description" content="Le Chalet, halte corse du Col de la Serra à Vivario. Cuisine familiale, charcuterie du terroir, boutique et cheminée. Ouvert 7j/7 dès 5h30."/>
+  <meta property="og:title" content="Le Chalet : Vivario, halte corse sur la RN193"/>
+  <meta property="og:description" content="Restaurant familial corse, cheminée, charcuteries suspendues et boutique de terroir. Col de la Serra, 20219 Vivario."/>
+  <meta property="og:image" content="./assets/images/hero-le-chalet-vivario.jpg"/>
+  <meta name="theme-color" content="#F6EFE1"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23A63A20'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='serif' font-size='62' fill='%23F6EFE1'%3EC%3C/text%3E%3C/svg%3E"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F6EFE1',
+            ink: '#1C1410',
+            'ink-2': '#5C4A3A',
+            accent: '#A63A20',
+            line: '#D9C9AE'
+          },
+          fontFamily: {
+            display: ['"Libre Caslon Text"', 'Georgia', 'serif'],
+            sans: ['"Work Sans"', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            card: '0 10px 24px rgba(28,20,16,0.08)',
+            soft: '0 1px 0 rgba(28,20,16,0.05)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg:#F6EFE1;
+      --ink:#1C1410;
+      --ink-2:#5C4A3A;
+      --accent:#A63A20;
+      --line:#D9C9AE;
+    }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .font-display { font-family: 'Libre Caslon Text', Georgia, serif; letter-spacing: -0.015em; }
+    .eyebrow { letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; font-size: 0.82rem; }
+    h1 { font-size: clamp(2.6rem, 7.5vw, 5.2rem); line-height: 1.02; }
+    h2 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); line-height: 1.1; }
+    h3 { font-size: clamp(1.25rem, 2.2vw, 1.55rem); line-height: 1.2; }
+    small, .small { font-size: 0.88rem; }
+
+    /* Paper grain overlay (very subtle) */
+    .grain::after {
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      opacity:.05;
+      mix-blend-mode:multiply;
+      background-image: radial-gradient(rgba(28,20,16,0.9) 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
+
+    /* Marquee */
+    .marquee-track { animation: marquee 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* Reveal default state */
+    [data-reveal] { opacity: 0; transform: translateY(24px); will-change: opacity, transform; }
+
+    /* Rules & filets */
+    .filet { height: 1px; background: var(--line); width: 100%; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: .35rem .8rem; font-size:.78rem; color:var(--ink-2); background: rgba(255,255,255,0.4); }
+
+    /* Links */
+    a.link-underline { background-image: linear-gradient(var(--accent), var(--accent)); background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat; }
+
+    /* Hero image frame */
+    .hero-frame { position:relative; overflow:hidden; border-radius: 14px; box-shadow: 0 1px 0 rgba(28,20,16,.08), 0 24px 60px -30px rgba(28,20,16,.45); }
+
+    /* Card hover */
+    .card-sig { transition: transform .2s ease-out, box-shadow .2s ease-out; }
+    .card-sig:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(28,20,16,0.08); }
+
+    /* Number XXL */
+    .note-xxl { font-size: clamp(5rem, 18vw, 11rem); line-height: 0.9; }
+    .brand-xxl { font-size: clamp(4rem, 14vw, 10rem); line-height: 0.9; letter-spacing: -0.04em; }
+
+    /* Maps */
+    iframe.map { width: 100%; height: 420px; border: 0; border-radius: 16px; }
+
+    /* Tight line for nav */
+    .nav-link { position: relative; }
+    .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    /* Quote dot rotation */
+    .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--line); transition: background .3s; }
+    .dot.active { background: var(--accent); }
+
+    /* Smooth selection */
+    ::selection { background: #A63A20; color: #F6EFE1; }
+
+    /* Reduced motion respect */
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      .marquee-track { animation: none !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ============== NAV ============== -->
+  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/70 border-b border-line/60">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-3.5 flex items-center justify-between gap-6">
+      <a href="#top" class="font-display text-2xl md:text-[1.65rem] tracking-tight text-ink">Le Chalet</a>
+      <div class="hidden md:flex items-center gap-8 text-[0.92rem] text-ink-2">
+        <a href="#top" class="nav-link">Maison</a>
+        <a href="#signature" class="nav-link">Carte</a>
+        <a href="#galerie" class="nav-link">Galerie</a>
+        <a href="#infos" class="nav-link">Infos</a>
+      </div>
+      <a href="#infos" class="inline-flex items-center gap-2 text-[0.88rem] border border-line rounded-full px-4 py-2 text-ink hover:border-accent hover:text-accent transition-colors">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        Nous trouver
+      </a>
+    </div>
+  </nav>
+
+  <main id="top" class="pt-[68px]">
+
+    <!-- ============== HERO ============== -->
+    <section id="hero" class="relative">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-10 md:pt-16 pb-12 md:pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-end">
+
+          <div class="md:col-span-7">
+            <p class="eyebrow text-ink-2" data-reveal>Restaurant corse , Vivario</p>
+            <h1 class="font-display font-normal text-ink mt-5" data-reveal>
+              La halte corse du Col.
+            </h1>
+            <p class="mt-6 max-w-xl text-ink-2 text-[1.05rem] md:text-[1.1rem]" data-reveal>
+              Sur la RN193, entre Ajaccio et Bastia, Le Chalet accueille dès l'aube les voyageurs au pied du Col de la Serra. Cuisine familiale, feu de cheminée, charcuteries suspendues et boutique de terroir : une maison qui se partage.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-3" data-reveal>
+              <a href="#infos" class="inline-flex items-center gap-2 bg-accent text-bg px-5 py-3 rounded-full text-[0.95rem] font-medium hover:opacity-95 transition shadow-card">
+                Nous trouver
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#histoire" class="inline-flex items-center gap-2 border border-ink/15 text-ink px-5 py-3 rounded-full text-[0.95rem] hover:border-ink transition">
+                Découvrir la maison
+              </a>
+            </div>
+            <div class="mt-10 flex flex-wrap gap-2" data-reveal>
+              <span class="chip">Ouvert 7j/7</span>
+              <span class="chip">Dès 5h30</span>
+              <span class="chip">Col de la Serra</span>
+              <span class="chip">4,5 sur 1 422 avis Google</span>
+            </div>
+          </div>
+
+          <div class="md:col-span-5" data-reveal>
+            <div class="hero-frame grain aspect-[4/5] md:aspect-[3/4]">
+              <img
+                id="hero-image"
+                src="./assets/images/hero-le-chalet-vivario.jpg"
+                alt="Le Chalet, façade et terrasse, Vivario"
+                class="absolute inset-0 w-full h-full object-cover"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </div>
+            <p class="mt-3 small text-ink-2 text-right">Col de la Serra, RN 193 (Vivario)</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="filet max-w-7xl mx-auto"></div>
+    </section>
+
+    <!-- ============== MARQUEE ============== -->
+    <section id="marquee" class="marquee bg-ink text-bg overflow-hidden select-none py-5 md:py-6">
+      <div class="marquee-track flex gap-12 whitespace-nowrap font-display italic text-[1.3rem] md:text-[1.7rem]">
+        <span>Charcuterie corse</span><span class="text-accent">✦</span>
+        <span>Cheminée</span><span class="text-accent">✦</span>
+        <span>Assiette du Bûcheron</span><span class="text-accent">✦</span>
+        <span>Col de la Serra</span><span class="text-accent">✦</span>
+        <span>Ouvert 7j/7 dès 5h30</span><span class="text-accent">✦</span>
+        <span>Boutique de terroir</span><span class="text-accent">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span>Charcuterie corse</span><span class="text-accent">✦</span>
+        <span>Cheminée</span><span class="text-accent">✦</span>
+        <span>Assiette du Bûcheron</span><span class="text-accent">✦</span>
+        <span>Col de la Serra</span><span class="text-accent">✦</span>
+        <span>Ouvert 7j/7 dès 5h30</span><span class="text-accent">✦</span>
+        <span>Boutique de terroir</span><span class="text-accent">✦</span>
+      </div>
+    </section>
+
+    <!-- ============== HISTOIRE ============== -->
+    <section id="histoire" class="py-20 md:py-32">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
+          <div class="md:col-span-7 md:sticky md:top-28">
+            <p class="eyebrow text-accent" data-reveal>La maison</p>
+            <h2 class="font-display font-normal text-ink mt-4" data-reveal>Une halte, une maison.</h2>
+            <div class="mt-8 space-y-5 text-ink-2 text-[1.05rem] max-w-[56ch]">
+              <p data-reveal>
+                Posé sur la route nationale 193, entre Vivario et la forêt de Vizzavona, Le Chalet est la première porte de la montagne corse pour qui descend vers Ajaccio ou remonte vers Bastia. On y entre par le parfum du feu de cheminée, on s'assoit sous les saucissons et le sanglier suspendus, on repart avec un pain de ménage et deux tranches de coppa.
+              </p>
+              <p data-reveal>
+                La maison se transmet comme une table de famille : recettes simples, produits du terroir, accueil chaleureux dès cinq heures trente. Routiers, randonneurs, familles et voyageurs d'un jour y trouvent la même assiette généreuse, le même café, le même bonjour.
+              </p>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-5 text-ink-2 small" data-reveal>
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>RN 193, Col de la Serra</div>
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>20219 Vivario</div>
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>Haute-Corse</div>
+            </div>
+          </div>
+
+          <div class="md:col-span-5" data-reveal>
+            <div class="relative overflow-hidden rounded-xl aspect-[3/4] shadow-card">
+              <img
+                src="./assets/images/tripadvisor-le-chalet-terrasse.jpg"
+                alt="Terrasse et halte montagnarde du Chalet"
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="mt-3 small text-ink-2">La terrasse, à l'ombre des châtaigniers.</figcaption>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== SIGNATURE ============== -->
+    <section id="signature" class="py-20 md:py-28 bg-bg">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+          <div>
+            <p class="eyebrow text-accent" data-reveal>La carte</p>
+            <h2 class="font-display font-normal text-ink mt-4" data-reveal>Trois signatures de la table.</h2>
+          </div>
+          <p class="max-w-md text-ink-2" data-reveal>
+            Des plats qui racontent le Col, la forêt, le village. Portions généreuses, produits frais, recettes de famille.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+          <article class="card-sig bg-white/50 border border-line rounded-xl overflow-hidden" data-reveal>
+            <div class="aspect-square overflow-hidden">
+              <img src="./assets/images/restaurantguru-le-chalet-plats.jpg" alt="Assiette du Bûcheron, plat signature" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+            </div>
+            <div class="p-6">
+              <p class="eyebrow text-ink-2 small">Plat signature</p>
+              <h3 class="font-display font-normal text-ink mt-2">L'Assiette du Bûcheron</h3>
+              <p class="mt-3 text-ink-2 small">Trois viandes cuites au feu, frites maison, salade du jardin. La pièce qui nourrit les longues routes.</p>
+              <div class="filet mt-5"></div>
+            </div>
+          </article>
+
+          <article class="card-sig bg-white/50 border border-line rounded-xl overflow-hidden" data-reveal>
+            <div class="aspect-square overflow-hidden">
+              <img src="./assets/images/restaurantguru-le-chalet-assiettes.jpg" alt="Charcuterie corse et plats de terroir" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+            </div>
+            <div class="p-6">
+              <p class="eyebrow text-ink-2 small">Boutique</p>
+              <h3 class="font-display font-normal text-ink mt-2">Charcuterie de la maison</h3>
+              <p class="mt-3 text-ink-2 small">Coppa, lonzu, figatellu et saucissons pendus au-dessus de la salle. À déguster, à emporter.</p>
+              <div class="filet mt-5"></div>
+            </div>
+          </article>
+
+          <article class="card-sig bg-white/50 border border-line rounded-xl overflow-hidden sm:col-span-2 lg:col-span-1" data-reveal>
+            <div class="aspect-square overflow-hidden">
+              <img src="./assets/images/restaurantguru-le-chalet-lasagnes.jpg" alt="Lasagnes maison du Chalet" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+            </div>
+            <div class="p-6">
+              <p class="eyebrow text-ink-2 small">Plats du jour</p>
+              <h3 class="font-display font-normal text-ink mt-2">Lasagnes maison</h3>
+              <p class="mt-3 text-ink-2 small">Pâtes fraîches, sauce mijotée, fromages corses. La recette que les habitués demandent par cœur.</p>
+              <div class="filet mt-5"></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== GALERIE ============== -->
+    <section id="galerie" class="py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div>
+            <p class="eyebrow text-accent" data-reveal>Le lieu en images</p>
+            <h2 class="font-display font-normal text-ink mt-4" data-reveal>L'ambiance du Chalet.</h2>
+          </div>
+          <p class="max-w-sm text-ink-2" data-reveal>Bois, pierre, feu. Quelques instantanés de la maison.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4">
+          <div class="col-span-2 md:col-span-3 aspect-[3/4] overflow-hidden rounded-lg" data-reveal>
+            <img src="./assets/images/thumbnail-le-chalet-vivario.jpg" alt="Vue du Chalet depuis la route" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+          <div class="col-span-1 md:col-span-3 aspect-[4/3] overflow-hidden rounded-lg" data-reveal>
+            <img src="./assets/images/restaurantguru-le-chalet-moules.jpg" alt="Plat de moules servi au Chalet" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+          <div class="col-span-1 md:col-span-2 aspect-[4/5] overflow-hidden rounded-lg" data-reveal>
+            <img src="./assets/images/tripadvisor-le-chalet-terrasse.jpg" alt="Ambiance chalet de montagne corse" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+          <div class="col-span-1 md:col-span-2 aspect-square overflow-hidden rounded-lg" data-reveal>
+            <img src="./assets/images/restaurantguru-le-chalet-plats.jpg" alt="Détail plat chaud de la carte" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+          <div class="col-span-2 md:col-span-2 aspect-[4/5] overflow-hidden rounded-lg" data-reveal>
+            <img src="https://placehold.co/1200x1500/F6EFE1/5C4A3A?text=Boutique+terroir" alt="Boutique de produits corses" class="w-full h-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+        </div>
+
+        <p class="mt-6 small text-ink-2 text-center">Quelques clichés supplémentaires (intérieur cheminée, rayon boutique) seront ajoutés par la maison.</p>
+      </div>
+    </section>
+
+    <!-- ============== PROOF ============== -->
+    <section id="proof" class="py-20 md:py-28 bg-ink text-bg relative overflow-hidden">
+      <div class="absolute inset-0 grain pointer-events-none"></div>
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center relative">
+        <p class="eyebrow text-bg/70" data-reveal>Avis Google</p>
+        <div class="mt-6 flex items-end justify-center gap-2" data-reveal>
+          <strong class="note-xxl font-display text-accent font-normal">4,5</strong>
+          <span class="font-display text-bg/70 text-3xl md:text-5xl pb-3">/5</span>
+        </div>
+        <p class="mt-2 text-bg/80" data-reveal>sur <strong class="text-bg">1 422 avis</strong> Google . Classé n°2 des restaurants de Vivario.</p>
+
+        <div class="mt-14 relative min-h-[110px]" data-reveal>
+          <figure class="quote absolute inset-0 opacity-0 transition-opacity duration-500 ease-out">
+            <blockquote class="font-display italic text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
+              « J'y ai mangé en famille et cela a été parfait, surtout avec un accueil très sympathique et agréable. »
+            </blockquote>
+            <figcaption class="mt-4 small text-bg/60">Avis 5 étoiles , RestaurantGuru</figcaption>
+          </figure>
+          <figure class="quote absolute inset-0 opacity-0 transition-opacity duration-500 ease-out">
+            <blockquote class="font-display italic text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
+              « Saucissons et sanglier suspendus à l'intérieur, accueil chaleureux, parfait pour une halte sur la route nationale. »
+            </blockquote>
+            <figcaption class="mt-4 small text-bg/60">Avis 5 étoiles , TripAdvisor</figcaption>
+          </figure>
+          <figure class="quote absolute inset-0 opacity-0 transition-opacity duration-500 ease-out">
+            <blockquote class="font-display italic text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
+              « Adresse incontournable pour les amateurs de gastronomie corse, dans un cadre montagnard typique. »
+            </blockquote>
+            <figcaption class="mt-4 small text-bg/60">Restaurants de France</figcaption>
+          </figure>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-2">
+          <span class="dot" data-dot="0"></span>
+          <span class="dot" data-dot="1"></span>
+          <span class="dot" data-dot="2"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== INFOS ============== -->
+    <section id="infos" class="py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="mb-12">
+          <p class="eyebrow text-accent" data-reveal>Nous trouver</p>
+          <h2 class="font-display font-normal text-ink mt-4" data-reveal>Toujours ouverts, toujours à table.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14">
+
+          <div class="md:col-span-5 space-y-10">
+
+            <div data-reveal>
+              <p class="eyebrow text-ink-2 small">Horaires</p>
+              <div class="mt-4 border border-line rounded-xl divide-y divide-line overflow-hidden bg-white/40">
+                <div class="flex items-center justify-between px-5 py-4">
+                  <span class="font-display text-ink">Du lundi au dimanche</span>
+                  <span class="text-ink-2">05h30 , 19h00</span>
+                </div>
+                <div class="flex items-center justify-between px-5 py-3 bg-accent/5">
+                  <span class="small text-ink-2">Ouvert 7j/7, toute l'année</span>
+                  <span class="small text-accent font-medium">7j/7</span>
+                </div>
+              </div>
+            </div>
+
+            <div data-reveal>
+              <p class="eyebrow text-ink-2 small">Adresse</p>
+              <address class="not-italic mt-4 font-display text-ink text-xl leading-snug">
+                Route RN 193<br/>
+                Col de la Serra<br/>
+                20219 Vivario, Haute-Corse
+              </address>
+            </div>
+
+            <div data-reveal>
+              <p class="eyebrow text-ink-2 small">Téléphone</p>
+              <a href="tel:+33495472240" class="mt-3 inline-flex items-center gap-3 font-display text-2xl text-ink link-underline">
+                04 95 47 22 40
+              </a>
+            </div>
+
+            <div data-reveal class="pt-2">
+              <a href="https://maps.google.com/maps?q=42.1696873,9.1657915" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-accent text-bg px-5 py-3 rounded-full text-[0.95rem] font-medium hover:opacity-95 transition shadow-card">
+                Itinéraire Google Maps
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="md:col-span-7" data-reveal>
+            <div class="border border-line rounded-2xl p-2 bg-white/40">
+              <iframe
+                class="map"
+                src="https://maps.google.com/maps?q=42.1696873,9.1657915&z=15&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localisation Le Chalet, Vivario">
+              </iframe>
+            </div>
+            <p class="mt-3 small text-ink-2">42,1697° N . 9,1658° E . Col de la Serra, RN 193.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="bg-bg border-t border-line/70 pt-16 md:pt-24 pb-10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="overflow-hidden">
+        <h2 class="brand-xxl font-display font-normal text-ink" data-reveal>Le Chalet</h2>
+      </div>
+      <div class="mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6 text-ink-2">
+        <p class="small max-w-lg">
+          Route RN 193, Col de la Serra, 20219 Vivario . 04 95 47 22 40 . Tous les jours, 5h30 à 19h00.
+        </p>
+        <div class="flex flex-wrap gap-4 small">
+          <a href="#top" class="hover:text-accent transition">Haut de page</a>
+          <span class="text-line">|</span>
+          <a href="#signature" class="hover:text-accent transition">Carte</a>
+          <span class="text-line">|</span>
+          <a href="#infos" class="hover:text-accent transition">Nous trouver</a>
+        </div>
+      </div>
+      <div class="filet mt-10"></div>
+      <p class="mt-6 small text-ink-2">
+        Site réalisé avec soin par <a href="mailto:developers@mindlet.app" class="link-underline text-ink">Menghi Computer Science</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============== SCRIPTS ============== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Le Chalet",
+    "image": "./assets/images/hero-le-chalet-vivario.jpg",
+    "servesCuisine": ["Corse", "Française", "Familiale"],
+    "priceRange": "€",
+    "telephone": "+33495472240",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Route RN 193, Col de la Serra",
+      "addressLocality": "Vivario",
+      "postalCode": "20219",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.1696873,
+      "longitude": 9.1657915
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "05:30",
+      "closes": "19:00"
+    }],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": 1422
+    }
+  }
+  </script>
+
+  <script type="module">
+    import { animate, inView, scroll } from 'https://cdn.jsdelivr.net/npm/motion@10.18.0/+esm';
+    import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm';
+
+    // Smooth scroll
+    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // Anchor smooth scroll via Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -70, duration: 1.1 }); }
+        }
+      });
+    });
+
+    // Scroll reveals
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    revealEls.forEach((el, i) => {
+      inView(el, () => {
+        animate(el,
+          { opacity: [0, 1], transform: ['translateY(24px)', 'translateY(0px)'] },
+          { duration: 0.75, delay: (i % 4) * 0.07, easing: [0.2, 0.7, 0.2, 1] }
+        );
+      }, { margin: '0px 0px -10% 0px' });
+    });
+
+    // Hero parallax
+    const hero = document.querySelector('#hero-image');
+    if (hero && window.matchMedia('(min-width: 768px)').matches) {
+      scroll(
+        animate(hero, { transform: ['translateY(0%)', 'translateY(-10%)'] }),
+        { target: hero, offset: ['start end', 'end start'] }
+      );
+    }
+
+    // Quote rotator
+    const quotes = document.querySelectorAll('.quote');
+    const dots = document.querySelectorAll('[data-dot]');
+    let idx = 0;
+    function showQuote(i) {
+      quotes.forEach((q, qi) => { q.style.opacity = (qi === i) ? '1' : '0'; });
+      dots.forEach((d, di) => { d.classList.toggle('active', di === i); });
+    }
+    if (quotes.length) {
+      showQuote(0);
+      setInterval(() => { idx = (idx + 1) % quotes.length; showQuote(idx); }, 6000);
+    }
+  </script>
+</body>
+</html>
