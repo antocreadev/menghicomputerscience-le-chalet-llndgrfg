@@ -8,27 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          bg: '#F2ECDE',
-          ink: '#1A1713',
-          'ink-2': '#6B5E4E',
-          accent: '#B8391A',
-          line: '#CFC0A3'
-        },
-        fontFamily: {
-          display: ['"Bricolage Grotesque"', 'Georgia', 'serif'],
-          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-          sans: ['Inter', 'system-ui', 'sans-serif']
-        }
-      }
-    }
-  }
-</script>
+<link rel="stylesheet" href="./tailwind.css"/>
 <style>
   :root{
     --bg:#F2ECDE; --ink:#1A1713; --ink-2:#6B5E4E; --accent:#B8391A; --line:#CFC0A3;
@@ -41,7 +21,8 @@
   .clock{font-family:'Bricolage Grotesque',Georgia,serif;font-weight:700;font-variation-settings:"opsz" 96;letter-spacing:-0.03em;line-height:0.92;}
   .rule-top{border-top:1px solid var(--line);}
   .rule-bottom{border-bottom:1px solid var(--line);}
-  [data-reveal]{opacity:0;transform:translateY(14px);}
+  .js-ready [data-reveal]{opacity:0;transform:translateY(16px);animation:autoreveal .5s ease-out .15s forwards;}
+  @keyframes autoreveal{to{opacity:1;transform:translateY(0)}}
   .pulse-dot{animation:statuspulse 2.2s ease-in-out infinite;}
   @keyframes statuspulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.55;transform:scale(0.92);}}
   @media (prefers-reduced-motion: reduce){
@@ -455,6 +436,7 @@
 </footer>
 
 <script type="module">
+document.documentElement.classList.add('js-ready');
   import { animate, inView } from 'https://cdn.jsdelivr.net/npm/motion@10.18.0/+esm';
   import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm';
 
